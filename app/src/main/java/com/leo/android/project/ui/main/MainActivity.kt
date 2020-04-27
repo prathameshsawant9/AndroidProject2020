@@ -1,7 +1,8 @@
-package com.leo.android.project
+package com.leo.android.project.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.leo.android.project.R
 
 class MainActivity : AppCompatActivity() {
 

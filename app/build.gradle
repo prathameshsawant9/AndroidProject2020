@@ -16,6 +16,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -59,8 +60,8 @@ dependencies {
     def junit_test_version = "1.1.1"
     def espresso_version = "3.2.0"
     def fragment_test_version = "1.2.1"
-    def mockitoVersion = '2.8.9'
-    def mockitoAndroidVersion = '2.7.22'
+    def mockitoVersion = '3.3.3'
+    def mockitoAndroidVersion = '3.3.3'
 
     // Multi Dex
     implementation "com.android.support:multidex:$multi_dex_version"
