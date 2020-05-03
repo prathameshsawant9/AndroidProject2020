@@ -5,12 +5,16 @@ import com.leo.android.project.data.model.GenreResponse
 import com.leo.android.project.data.model.LoginResponse
 import com.leo.android.project.data.model.Song
 import com.leo.android.project.data.repo.remote.RemoteRepository
+import com.leo.android.project.test.idling.EspressoIdlingResource
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import java.util.*
 import javax.inject.Inject
 
-class FakeRemoteRepoImpl @Inject constructor(): RemoteRepository{
+class FakeRemoteRepoImpl @Inject constructor(val testIdlingResource: EspressoIdlingResource): RemoteRepository{
+
+    private val ioThread = Dispatchers.IO
 
     /*
      * Random access code
@@ -26,16 +30,25 @@ class FakeRemoteRepoImpl @Inject constructor(): RemoteRepository{
     )
 
     override suspend fun login(username: String, password: String): LoginResponse =
-        withContext(Dispatchers.IO){
+        withContext(ioThread){
+
+            testIdlingResource.increment()
+
+            // replicating network like delay
+            delay(2_000)
+
+            testIdlingResource.decrement()
 
             LoginResponse(accessCode).apply {
-                statusCode = 200
+                statusCode = if (!username.equals("leo", true)){
+                    message = "Invalid Username or Password. Please Try Again"
+                    200
+                } else 200
             }
-
         }
 
     override suspend fun getGenres(paramAccessCode: String): GenreResponse =
-        withContext(Dispatchers.IO){
+        withContext(ioThread){
 
             GenreResponse(genreList).apply {
                 if(paramAccessCode.equals(accessCode, false)){

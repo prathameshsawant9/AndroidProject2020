@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="com.leo.android.project.ui.login.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/loginBG"
+        tools:context=".ui.login.LoginFragment">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtInputLayout1"
+            style="@style/edtTxtViewStyle"
+            android:layout_width="288dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/loginUsernameHint"
+            app:bindAdapterErrorText="@{model.user.usernameError}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTxtViewUsername"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:singleLine="true"
+                android:text="@={model.user.username}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtInputLayout2"
+            style="@style/edtTxtViewStyle"
+            android:layout_width="288dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/loginPasswordHint"
+            app:bindAdapterErrorText="@{model.pass.passwordError}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtInputLayout1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTxtViewPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:text="@={model.pass.password}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogin"
+            style="@style/btnStyle"
+            android:layout_width="288dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:onClick="@{()->model.validateLogin()}"
+            android:text="@string/loginButton"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtInputLayout2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

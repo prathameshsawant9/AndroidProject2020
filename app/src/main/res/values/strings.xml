@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Android Project 2020</string>
+
+    <!-- Main Activity -->
+    <string name="mainNavigationOpen">Open</string>
+    <string name="mainNavigationClose">Close</string>
+
+    <!-- Login -->
+    <string name="loginNavigationLabel">Login Fragment</string>
+    <string name="loginHeader2">LOGIN</string>
+    <string name="loginUsernameHint">Username</string>
+    <string name="loginPasswordHint">Password</string>
+    <string name="loginButton">LOGIN</string>
+
 </resources>

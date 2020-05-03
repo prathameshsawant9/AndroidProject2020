@@ -1,7 +1,10 @@
 package com.leo.android.project.di.component
 
 import android.content.Context
-import com.leo.android.project.di.module.RepoModule
+import com.leo.android.project.di.module.EspressoModule
+import com.leo.android.project.di.module.FragmentModule
+import com.leo.android.project.di.module.RepositoryModule
+import com.leo.android.project.di.module.VMBuilderModule
 import com.leo.android.project.ui.main.MainApplication
 import dagger.BindsInstance
 import dagger.Component
@@ -11,7 +14,10 @@ import dagger.android.support.AndroidSupportInjectionModule
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        RepoModule::class
+        RepositoryModule::class,
+        VMBuilderModule::class,
+        EspressoModule::class,
+        FragmentModule::class
     ]
 )
 interface AppComponent : AndroidInjector<MainApplication>{

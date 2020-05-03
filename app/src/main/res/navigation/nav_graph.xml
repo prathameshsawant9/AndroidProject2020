@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.leo.android.project.ui.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_genreFragment"
+            app:destination="@id/genreFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/genreFragment"
+        android:name="com.leo.android.project.ui.genre.GenreFragment"
+        android:label="GenreFragment"
+        tools:layout="@layout/fragment_genre">
+
+        <argument
+            android:name="accessCode"
+            android:defaultValue="0"
+            app:argType="string" />
+
+    </fragment>
+
+
+</navigation>

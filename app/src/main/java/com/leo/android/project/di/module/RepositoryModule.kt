@@ -12,7 +12,7 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-interface RepoModule{
+interface RepositoryModule{
 
     @Binds
     fun dbRepository(dbRepository: RoomDBRepoImpl): DBRepository
